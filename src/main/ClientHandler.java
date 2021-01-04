@@ -43,14 +43,27 @@ public class ClientHandler extends Thread {
 	            //Ovde u while ide switch metoda
 	            //LOGIN
 	            
+//	            while(isValid) {
+//                clientOutput.println(">>> Unesite korisnicko ime:");
+//                user.username = clientInput.readLine();
+//                clientOutput.println(">>> Unesite Lozinku:");
+//                user.password = clientInput.readLine();
+//                user.login(user.username, user.password,"members.txt");
+//	            
+//	            
+//	            }
+	            //registracija
 	            while(isValid) {
-                clientOutput.println(">>> Unesite korisnicko ime:");
-                user.username = clientInput.readLine();
-                clientOutput.println(">>> Unesite Lozinku:");
-                user.password = clientInput.readLine();
-                user.login(user.username, user.password,"members.txt");
-	            
-	            
+	            	clientOutput.println(">>> REGISTRACIJA");
+	            	clientOutput.println(">>> Unesite korisnicko ime:");
+	                user.username = clientInput.readLine();
+	                clientOutput.println(">>> Unesite Lozinku:");
+	                user.password = clientInput.readLine();
+	                clientOutput.println(">>> Unesite email:");
+	                user.email = clientInput.readLine();
+	                clientOutput.println(">>> Unesite pol:");
+	                user.pol = clientInput.readLine();
+	                user.registracija(user.username, user.password, user.email, user.pol);
 	            }
 	            
 	            

@@ -1,7 +1,12 @@
 package main;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.Scanner;
+
 
 public class User {
 	
@@ -36,9 +41,7 @@ public class User {
             		if(tempUsername.trim().equals(username.trim()) && tempPassword.trim().equals(password.trim())) {
             			found=true;
             			System.out.println("Uspeh");
-        				System.out.println("Trazeni, user: " + username+ " sifra: "+password);
-
-            			System.out.println("TEMP, user: " + tempUsername+ " sifra: "+tempPassword);
+        				
             		}
             	}
             	
@@ -49,7 +52,13 @@ public class User {
             }
 		}
             //Ovde registraciju namesti
-			
+		public void registracija(String username, String password, String email, String pol) {
+			String sve;
+			sve="\n"+ username+",password";
+		try {
+		    Files.write(Paths.get(filepath), sve.getBytes(), StandardOpenOption.APPEND);
+		}catch (IOException e) {
+		    //exception handling left as an exercise for the reader
+			}
 		}
-		
-
+}
