@@ -5,7 +5,7 @@ import java.net.Socket;
 import java.util.LinkedList;
 public class Server {
 
-	
+	//Server
 	// Definisemo i cuvamo listu online korisnika koji su se zakacili na server
 	 
     public static LinkedList<ClientHandler> onlineUsers = new LinkedList<>();

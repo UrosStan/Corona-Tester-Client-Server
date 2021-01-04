@@ -48,7 +48,7 @@ public class User {
             	System.out.println("NISMO TE NASLI");
             }
 		}
-            
+            //Ovde registraciju namesti
 			
 		}
 		

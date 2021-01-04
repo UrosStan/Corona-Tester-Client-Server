@@ -62,8 +62,8 @@ public class Klijent implements Runnable {
  
  
             // Obradjena su dva izuzetka:
-            // Prvi u slucacu da je nepoznat host tj. server na koji se kacimo
-            // Drugi u slucaju da server iznenada prestane sa radom npr.
+            // 1)Prvi u slucacu da je nepoznat host tj. server na koji se kacimo
+            // 2)Drugi u slucaju da server iznenada prestane sa radom npr.
  
         } catch (UnknownHostException e) {
  

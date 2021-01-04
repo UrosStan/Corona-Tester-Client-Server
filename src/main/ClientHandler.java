@@ -40,7 +40,7 @@ public class ClientHandler extends Thread {
 	            boolean isValid = true;
 	            
 	            
-	            //Ovde u while ide switch metoda.
+	            //Ovde u while ide switch metoda
 	            //LOGIN
 	            
 	            while(isValid) {
