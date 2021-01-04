@@ -54,7 +54,7 @@ public class User {
             //Ovde registraciju namesti
 		public void registracija(String username, String password, String email, String pol) {
 			String sve;
-			sve="\n"+ username+",password";
+			sve="\n"+ username+","+ password;
 		try {
 		    Files.write(Paths.get(filepath), sve.getBytes(), StandardOpenOption.APPEND);
 		}catch (IOException e) {
