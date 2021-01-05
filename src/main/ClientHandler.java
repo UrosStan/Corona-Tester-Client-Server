@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
+import java.util.Random;
 
 
 
@@ -140,7 +141,7 @@ public class ClientHandler extends Thread {
 	    }
 	    
 	    public void Meni(User user,int i) {
-	    	System.out.println("I u meniju je?"+i);
+	    	
 	    	switch (i) {
 	    	
 			case 1:
@@ -172,10 +173,68 @@ public class ClientHandler extends Thread {
 	                clientOutput.println(">>> Unesite Lozinku:");
 	                user.password = clientInput.readLine();
 	                user.login(user.username, user.password,"members.txt",user.loggedIN);
+	                
 				} catch (IOException e) {
-					clientOutput.println(">>> Neuspesna registracija!");
+					clientOutput.println(">>> Neuspesan login");
 				}
 				
+				break;
+				
+			case 3:
+				try {
+				if(user.loggedIN) {
+					int temp,j=0;
+					clientOutput.println(">>> Zapoceli ste test samoprocene, "
+							+ "\nodgovarate pozitivno na pitanja unoseci broj 1(jedan), a negativno"
+							+ "\nunoseci broj 0(nula)");
+					clientOutput.println("Da li ste putovali van Srbije u okviru 14 dana pre početka simptoma?");
+					temp=Integer.parseInt(clientInput.readLine());
+					j+=temp;
+					clientOutput.println("Da li ste bili u kontaku sa zaraženim osobama?");
+					temp=Integer.parseInt(clientInput.readLine());
+					j+=temp;
+					
+					clientOutput.println("Šta imate od sledecih simptoma: ");
+					clientOutput.println("Povišena temperatura?");
+					temp=Integer.parseInt(clientInput.readLine());
+					j+=temp;
+					clientOutput.println("Kašalj?");
+					temp=Integer.parseInt(clientInput.readLine());
+					j+=temp;
+					clientOutput.println("Opšta slabost?");
+					temp=Integer.parseInt(clientInput.readLine());
+					j+=temp;
+					clientOutput.println("Gubitak čula mirisa?");
+					temp=Integer.parseInt(clientInput.readLine());
+					j+=temp;
+					clientOutput.println("Gubitak/promena čula ukusa?");
+					temp=Integer.parseInt(clientInput.readLine());
+					j+=temp;
+					
+					if(j>=2) {
+					boolean brzi_test_rezultat;
+					Random random = new Random();
+					brzi_test_rezultat=random.nextBoolean();
+					clientOutput.println("Pokrecem brzi test...");
+
+					if(brzi_test_rezultat) {
+						clientOutput.println("Rezultat Vaseg testa je pozitivan");
+						
+
+
+					}else {
+						clientOutput.println("Rezultat Vaseg testa je negativan");
+					}
+				}
+					
+				}else {
+					clientOutput.println("Molimo, prvo se ulogujte");
+
+				}
+			
+				}catch (IOException e){
+					clientOutput.println(">>> Doslo je do greske, molim, pokusajte ponovo");
+				}
 				break;
 			
 			default:
@@ -184,7 +243,7 @@ public class ClientHandler extends Thread {
 				
 			}
 	    	
-	    }
+	    }	
 	 
 	 
 	}

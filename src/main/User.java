@@ -18,7 +18,17 @@ public class User {
 	    public String Ime;
 	    public String prezime;
 	    public String pol;
+	    public boolean test;
 	 
+	    
+		public void setTest(boolean test) {
+			this.test = test;
+		}
+
+		public void setLoggedIN(boolean loggedIN) {
+			this.loggedIN = loggedIN;
+		}
+		
 		public User() {
 			
 		}
@@ -42,7 +52,7 @@ public class User {
             		tempPassword = x.next();
             		
             		if(tempUsername.trim().equals(username.trim()) && tempPassword.trim().equals(password.trim())) {
-            			loggedIN=true;
+            			setLoggedIN(true);
             			System.out.println("Uspesno ste se ulogovali");
         				
             		}
@@ -64,6 +74,8 @@ public class User {
 		    //exception handling left as an exercise for the reader
 			}
 		}
+		
+		
 		
 		
 }
