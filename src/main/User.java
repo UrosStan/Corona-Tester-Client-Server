@@ -10,23 +10,26 @@ import java.util.Scanner;
 
 public class User {
 	
+		boolean loggedIN;
 		public String filepath = "members.txt";
     	public String username;
 	    public String password;
 	    public String email;
+	    public String Ime;
+	    public String prezime;
 	    public String pol;
 	 
 		public User() {
 			
 		}
 		private static Scanner x;
-		public static void registracija(String username,String password,String email,String pol,String filepath) {
-			
-		}
+//		public static void registracija(String username,String password,String email,String pol,String filepath) {
+//			
+//		}
 		
-		public void login(String username,String password,String filepath) {
+		public void login(String username,String password,String filepath, boolean loggedIN) {
 			
-			boolean found = false;
+			
 			String tempUsername=" ";
 			String tempPassword = " ";
 			
@@ -34,19 +37,19 @@ public class User {
             try {
             	x = new Scanner(new File(filepath));
             	x.useDelimiter("[,\n]");
-            	while(x.hasNext() && !found) {
+            	while(x.hasNext() && !loggedIN) {
             		tempUsername = x.next();
             		tempPassword = x.next();
             		
             		if(tempUsername.trim().equals(username.trim()) && tempPassword.trim().equals(password.trim())) {
-            			found=true;
-            			System.out.println("Uspeh");
+            			loggedIN=true;
+            			System.out.println("Uspesno ste se ulogovali");
         				
             		}
             	}
             	
             	x.close();
-            	System.out.println(found);
+            	System.out.println(loggedIN);
             }catch (Exception e) {
             	System.out.println("NISMO TE NASLI");
             }
@@ -54,11 +57,13 @@ public class User {
             //Ovde registraciju namesti
 		public void registracija(String username, String password, String email, String pol) {
 			String sve;
-			sve="\n"+ username+","+ password;
+			sve="\n"+ username+","+ password +"";
 		try {
 		    Files.write(Paths.get(filepath), sve.getBytes(), StandardOpenOption.APPEND);
 		}catch (IOException e) {
 		    //exception handling left as an exercise for the reader
 			}
 		}
+		
+		
 }
