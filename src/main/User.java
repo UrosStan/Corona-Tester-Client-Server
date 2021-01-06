@@ -18,7 +18,10 @@ public class User {
 		boolean loggedIN;
 		
     	public String username;
-	    public String password;
+	    public String getUsername() {
+			return username;
+		}
+		public String password;
 	    public String Ime;
 	    public String prezime;
 	    public String email;

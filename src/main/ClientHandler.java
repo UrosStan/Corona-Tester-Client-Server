@@ -197,7 +197,7 @@ public class ClientHandler extends Thread {
 				
 			case 3:
 				try {
-				if(user.loggedIN) {
+				if(user.loggedIN && !user.getUsername().equals("admin")) {
 					int temp,j=0;
 					clientOutput.println(">>> Zapoceli ste test samoprocene, "
 							+ "\nodgovarate pozitivno na pitanja unoseci broj 1(jedan), a negativno"
@@ -254,8 +254,16 @@ public class ClientHandler extends Thread {
 				break;
 			
 			case 4:
-				//Statistika.upisStat(Statistika.brojTestova, Statistika.brojPozitivnih, Statistika.brojNegativnih, Statistika.brojNadzorom);
-				Statistika.citaStat();
+				if(user.getUsername().equals("admin")){
+					clientOutput.println(">>>Uspesno otvorena statistika: ");
+
+					Statistika.citaStat();
+				}else {
+					clientOutput.println(">>>Samo admin moze pristupiti ovom fajlu");
+
+				}
+				
+				
 				break;
 			default:
 				clientOutput.println(">>> Lose uneta komanda, pokusajte ponovo!");
