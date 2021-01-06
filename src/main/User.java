@@ -10,20 +10,23 @@ import java.util.Scanner;
 
 public class User {
 	
+	public String filepath = "members.txt";
+	public String statistika = "statistika.txt";
+	
+	
+	
 		boolean loggedIN;
-		public String filepath = "members.txt";
+		
     	public String username;
 	    public String password;
-	    public String email;
 	    public String Ime;
 	    public String prezime;
+	    public String email;
 	    public String pol;
-	    public boolean test;
+	  
+	   
 	 
-	    
-		public void setTest(boolean test) {
-			this.test = test;
-		}
+	   
 
 		public void setLoggedIN(boolean loggedIN) {
 			this.loggedIN = loggedIN;
@@ -37,11 +40,17 @@ public class User {
 //			
 //		}
 		
+		@SuppressWarnings("unused")
 		public void login(String username,String password,String filepath, boolean loggedIN) {
 			
 			
 			String tempUsername=" ";
 			String tempPassword = " ";
+			String tempIme=" ";
+			String tempPrezime=" ";
+			String tempEmail = " ";
+			String tempPol = " ";
+			
 			
 			
             try {
@@ -50,24 +59,31 @@ public class User {
             	while(x.hasNext() && !loggedIN) {
             		tempUsername = x.next();
             		tempPassword = x.next();
+            		tempIme = x.next();
+            		tempPrezime= x.next();
+            		tempEmail = x.next();
+            		tempPol = x.next();
+            		
+
+            		
             		
             		if(tempUsername.trim().equals(username.trim()) && tempPassword.trim().equals(password.trim())) {
             			setLoggedIN(true);
-            			System.out.println("Uspesno ste se ulogovali");
+            			loggedIN=true;
         				
             		}
             	}
             	
             	x.close();
-            	System.out.println(loggedIN);
+            	
             }catch (Exception e) {
-            	System.out.println("NISMO TE NASLI");
+            	System.out.println("EXNISMO TE NASLI");
             }
 		}
             //Ovde registraciju namesti
-		public void registracija(String username, String password, String email, String pol) {
+		public void registracija(String username, String password,String ime,String prezime, String email, String pol) {
 			String sve;
-			sve="\n"+ username+","+ password +"";
+			sve= username+","+ password +","+ime+","+prezime+","+email+","+pol+"\n";
 		try {
 		    Files.write(Paths.get(filepath), sve.getBytes(), StandardOpenOption.APPEND);
 		}catch (IOException e) {

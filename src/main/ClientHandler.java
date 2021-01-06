@@ -51,11 +51,14 @@ public class ClientHandler extends Thread {
 	            
 	           do {
 	        	  
-	        	    clientOutput.println(">>> *** MENI ***");
-	            	clientOutput.println(">>> 1.REGISTRACIJA");
-	            	clientOutput.println(">>> 2.LOGIN");
+	        	    clientOutput.println("*** MENI ***");
+	            	clientOutput.println("1.REGISTRACIJA");
+	            	clientOutput.println(" 2.LOGIN");
+	            	clientOutput.println("3.TEST SAMOPROCENE");
+	            	clientOutput.println("0.IZLAZ");
 	            	
-	            	clientOutput.println(">>> Izaberite iz menija opciju:");
+	            	
+	            	clientOutput.println(">>> Izaberite iz menija opciju: ");
 	            	i=Integer.parseInt(clientInput.readLine());
 	            	
 	            
@@ -153,11 +156,16 @@ public class ClientHandler extends Thread {
 					user.username = clientInput.readLine();
 					clientOutput.println(">>> Unesite Lozinku:");
 					user.password = clientInput.readLine();
+					clientOutput.println(">>> Unesite svoje ime:");
+					user.Ime = clientInput.readLine();
+					clientOutput.println(">>> Unesite svoje prezime:");
+					user.prezime = clientInput.readLine();
 					clientOutput.println(">>> Unesite email:");
 					user.email = clientInput.readLine();
 					clientOutput.println(">>> Unesite pol:");
 					user.pol = clientInput.readLine();
-					user.registracija(user.username, user.password, user.email, user.pol);
+					
+					user.registracija(user.username, user.password,user.Ime,user.prezime, user.email, user.pol);
 					clientOutput.println(">>> Uspesna registracija!");
 					break;
 				} catch (IOException e) {
@@ -172,10 +180,17 @@ public class ClientHandler extends Thread {
 	                user.username = clientInput.readLine();
 	                clientOutput.println(">>> Unesite Lozinku:");
 	                user.password = clientInput.readLine();
-	                user.login(user.username, user.password,"members.txt",user.loggedIN);
+	                user.login(user.username, user.password,"members.txt",false);
+	                if(user.loggedIN) {
+	                	clientOutput.println(">>> Uspesno ste se ulogovali");
+	                }else {
+	                	clientOutput.println(">>> Niste se uspesno  ulogovali");
+
+	                }
+
 	                
 				} catch (IOException e) {
-					clientOutput.println(">>> Neuspesan login");
+					clientOutput.println(">>> ex.Neuspesan login");
 				}
 				
 				break;
@@ -216,6 +231,7 @@ public class ClientHandler extends Thread {
 					Random random = new Random();
 					brzi_test_rezultat=random.nextBoolean();
 					clientOutput.println("Pokrecem brzi test...");
+					
 
 					if(brzi_test_rezultat) {
 						clientOutput.println("Rezultat Vaseg testa je pozitivan");
@@ -237,6 +253,10 @@ public class ClientHandler extends Thread {
 				}
 				break;
 			
+			case 4:
+				//Statistika.upisStat(Statistika.brojTestova, Statistika.brojPozitivnih, Statistika.brojNegativnih, Statistika.brojNadzorom);
+				Statistika.citaStat();
+				break;
 			default:
 				clientOutput.println(">>> Lose uneta komanda, pokusajte ponovo!");
 				break;

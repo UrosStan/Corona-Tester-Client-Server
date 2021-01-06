@@ -1,0 +1,4 @@
+Broj testova:2
+Broj pozitivnih:3
+Broj negativnih:4
+Pod nadzorom:5

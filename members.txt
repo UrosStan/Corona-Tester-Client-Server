@@ -1,3 +1,2 @@
-uki,123
-admin,admin
-
+uki,123,Uros,Stanimir,email,muski
+admin,admin,admin,admin,admin,admin
