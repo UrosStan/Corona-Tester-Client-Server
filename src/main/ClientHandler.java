@@ -180,7 +180,7 @@ public class ClientHandler extends Thread {
 	                user.username = clientInput.readLine();
 	                clientOutput.println(">>> Unesite Lozinku:");
 	                user.password = clientInput.readLine();
-	                user.login(user.username, user.password,"members.txt",false);
+	                user.login(user.getUsername(), user.getPassword(),"members.txt",false);
 	                if(user.loggedIN) {
 	                	clientOutput.println(">>> Uspesno ste se ulogovali");
 	                }else {
@@ -231,7 +231,7 @@ public class ClientHandler extends Thread {
 					Random random = new Random();
 					brzi_test_rezultat=random.nextBoolean();
 					clientOutput.println("Pokrecem brzi test...");
-					
+					Statistika.tajmerUpis(System.currentTimeMillis(), user.getUsername());	
 
 					if(brzi_test_rezultat) {
 						clientOutput.println("Rezultat Vaseg testa je pozitivan");

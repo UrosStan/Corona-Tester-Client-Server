@@ -1,2 +1,2 @@
-uki,123,Uros,Stanimir,email,muski
-admin,admin,admin,admin,admin,admin
+uki,123,Uros,Stanimirovic,dwa,muski
+ivan,ivan,ivan,ivan,inva,ivan

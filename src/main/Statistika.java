@@ -11,6 +11,8 @@ import java.util.Scanner;
 
 public class Statistika {
 	public static String statistika = "statistika.txt";
+	public static String tajmer = "tajmer.txt";
+
 	public static int brojTestova;
 	public static int brojPozitivnih;
 	public static int brojNegativnih;
@@ -19,14 +21,15 @@ public class Statistika {
 	
 	public static void upisStat(int brojTestova, int brojPozitivnih,int brojNegativnih,int brojNadzorom) {
 		String sve;
-		sve= "Broj testova:"+brojTestova+"\n"+ 
+		sve= 
+		"Broj testova:"+brojTestova+"\n"+ 
 		"Broj pozitivnih:" +brojPozitivnih+"\n"+ 
 		"Broj negativnih:"+brojNegativnih+"\n"+
 		"Pod nadzorom:"+brojNadzorom+"\n";
 	try {
 	    Files.write(Paths.get(statistika), sve.getBytes(), StandardOpenOption.WRITE);
 	}catch (IOException e) {
-	    //exception handling left as an exercise for the reader
+	    System.out.println("Greska prilikom upisa u stat");
 		}
 	}
 	
@@ -85,7 +88,15 @@ public static void citaStat() {
 	
 	
 	
-	
+public static void tajmerUpis(long vreme,String username) {
+	String sve;
+	sve= username+":"+vreme+"\n";
+try {
+    Files.write(Paths.get(tajmer), sve.getBytes(), StandardOpenOption.APPEND);
+}catch (IOException e) {
+    System.out.println("Greska prilikom upisa u stat");
+	}
+}
 	
 	
 	

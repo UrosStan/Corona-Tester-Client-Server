@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Scanner;
 
+//System.out.println( System.currentTimeMillis() );
 
 public class User {
 	
@@ -26,10 +27,21 @@ public class User {
 	    public String prezime;
 	    public String email;
 	    public String pol;
+	    public String vremeTesta;
+	    public String stanje;
+	    
 	  
 	   
 	 
 	   
+
+		public String getPassword() {
+			return password;
+		}
+
+		public void setVremeTesta(String vremeTesta) {
+			this.vremeTesta = vremeTesta;
+		}
 
 		public void setLoggedIN(boolean loggedIN) {
 			this.loggedIN = loggedIN;
